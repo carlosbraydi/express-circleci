@@ -27,14 +27,34 @@ jobs:
       - run:
           name: Corriendo pruebas
           command: npm run test
+  deploy-in-lambda:
+    executor: serverless/default
+    steps:
+      - checkout
+      - aws-cli/setup
+      - restore_cache:
+           name: Restore carpeta node modules en cache
+           keys:
+             - mi-clave
+      - serverless/setup:
+          provider: AWS
+          app-name: movies
+          org-name: cazb999
+      - run:
+          name: deploy
+          command: serverless deploy -v
           
 orbs:
   serverless: circleci/serverless-framework@1.0.1
   aws-cli: circleci/aws-cli@0.1.22
 workflows:
-  node-tests:
+  express-deploy-to-lambda:
     jobs:
       - node-build
       - node-test:
           requires:
             - node-build
+      - deploy-in-lambda:
+          requires:
+            - node-test
+
