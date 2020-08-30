@@ -32,10 +32,7 @@ jobs:
     steps:
       - checkout
       - aws-cli/setup
-      - restore_cache:
-           name: Restore carpeta node modules en cache
-           keys:
-             - mi-clave
+      - node/install-packages
       - serverless/setup:
           provider: AWS
           app-name: movies
