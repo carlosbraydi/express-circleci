@@ -7,10 +7,10 @@ jobs:
   node-test:
     executor: node-docker
     steps:
+      - checkout
       - run:
           name: instalación de paquetes
           command: npm install
-      - checkout
       - run:
           name: Corriendo pruebas
           command: npm run test
