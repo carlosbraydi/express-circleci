@@ -32,7 +32,9 @@ jobs:
     steps:
       - checkout
       - aws-cli/setup
-      - node/install-packages
+      - run:
+          name: instalación de paquetes
+          command: npm install
       - serverless/setup:
           provider: AWS
           app-name: movies
