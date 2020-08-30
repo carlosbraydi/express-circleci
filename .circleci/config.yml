@@ -14,6 +14,17 @@ jobs:
       - run:
           name: Corriendo pruebas
           command: npm run test
+  node-test-prueba:
+    executor: node-docker
+    steps:
+      - checkout
+      - run:
+          name: Corriendo pruebas
+          command: npm run test
+          
+orbs:
+  serverless: circleci/serverless-framework@1.0.1
+  aws-cli: circleci/aws-cli@0.1.22
 workflows:
   node-tests:
     jobs:
