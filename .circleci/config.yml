@@ -11,9 +11,6 @@ jobs:
       - run:
           name: instalación de paquetes
           command: npm install
-      - run:
-          name: Corriendo pruebas
-          command: npm run test
   node-test-prueba:
     executor: node-docker
     steps:
@@ -29,3 +26,4 @@ workflows:
   node-tests:
     jobs:
       - node-test
+      - node-test-prueba
