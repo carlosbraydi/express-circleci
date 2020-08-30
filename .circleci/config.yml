@@ -10,9 +10,7 @@ jobs:
       - run:
           name: instalación de paquetes
           command: npm install
-      - run:
-          name: Verificación de la correcta instalcion de paquetes
-          command: checkout
+      - checkout
       - run:
           name: Corriendo pruebas
           command: npm run test
