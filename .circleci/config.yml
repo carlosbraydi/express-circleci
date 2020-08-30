@@ -11,10 +11,19 @@ jobs:
       - run:
           name: instalación de paquetes
           command: npm install
+      - save_cache:
+          name: Guardar carpeta node modules en cache
+          key: mi-clave
+          paths:
+          - ./node_modules/
   node-test:
     executor: node-docker
     steps:
       - checkout
+      - restore_cache:
+           name: Restore carpeta node modules en cache
+           keys:
+             - mi-clave
       - run:
           name: Corriendo pruebas
           command: npm run test
