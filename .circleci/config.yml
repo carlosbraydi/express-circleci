@@ -1,0 +1,20 @@
+version: 2.1
+executors:
+  node-docker:
+    docker:
+      - image: node
+jobs:
+  node-test:
+    executor: node-docker
+    steps:
+      - checkout
+      - run:
+          name: instalación de paquetes
+          command: npm install
+      - run:
+          name: Corriendo pruebas
+          command: npm run test
+workflows:
+  node-tests:
+    jobs:
+      - node-test
