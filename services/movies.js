@@ -17,7 +17,7 @@ class MoviesService {
         return movies || [];
     }
 
-    async createMovie({movie}) {
+    async createMovie(movie) {
         const createMovieId = await this.ES_DB.create(this.type, movie);
         return createMovieId;
     }
