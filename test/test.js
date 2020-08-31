@@ -1,6 +1,6 @@
 const chai = require('chai');
 const assert = chai.assert;
-//const should = chai.should();
+const should = chai.should();
 const expect = chai.expect;
 const services = require('../services/movies');
 const mocks = require('../utils/mocks/movies');
